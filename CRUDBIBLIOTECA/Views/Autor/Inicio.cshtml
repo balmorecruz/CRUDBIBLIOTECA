@@ -1,0 +1,64 @@
+﻿@model List<CRUDBIBLIOTECA.Models.Autor>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="margin-top:30px">
+
+
+    <div class="col-sm-12">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Lista de autores</h4>
+            </div>
+
+            <div class="panel-body">
+                <a class="btn btn-success" href="@Url.Action("Registrar","Autor")">Crear nuevo</a>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-bordered table-dark">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Nacionalidad</th>
+                                <th style="width:150px"></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach (CRUDBIBLIOTECA.Models.Autor item in Model)
+                            {
+                                <tr>
+                                    <td>@item.nombre</td>
+                                    <td>@item.apellido</td>
+                                    <td>@item.nacionalidad</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("Editar","Autor",new {idautor=item.idautor})">Editar</a>
+                                        <a class="btn btn-danger btn-sm" href="@Url.Action("Eliminar","Autor",new {idautor=item.idautor})">Eliminar</a>
+
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+

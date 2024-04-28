@@ -1,0 +1,34 @@
+﻿@model CRUDBIBLIOTECA.Models.Autor
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Eliminar Autor</h4>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-danger">
+                    ¿Desea eliminar el autor: @Html.DisplayTextFor(m => m.nombre) @Html.DisplayTextFor(m => m.apellido)?
+                </div>
+                <form action="@Url.Action("Eliminar","Autor")" method="post">
+                    <input type="hidden" class="form-control" name="idautor" value="@Html.DisplayTextFor(m=>m.idautor)" />
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Inicio","Autor")">Volver</a>
+
+                </form>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

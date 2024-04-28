@@ -1,0 +1,43 @@
+﻿@model CRUDBIBLIOTECA.Models.Autor
+
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="margin-top:30px">
+
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Nuevo Contacto</h4>
+            </div>
+
+            <form action="@Url.Action("Registrar","Autor")" method="post">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" name="nombre" />
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" class="form-control" name="apellido" />
+                </div>
+                <div class="form-group">
+                    <label>Nacionalidad</label>
+                    <input type="text" class="form-control" name="nacionalidad" />
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-warning" href="@Url.Action("Inicio","Autor")">Volver</a>
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+</div>
+

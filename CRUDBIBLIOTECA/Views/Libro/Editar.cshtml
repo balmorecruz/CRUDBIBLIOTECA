@@ -1,0 +1,64 @@
+﻿@model CRUDBIBLIOTECA.Models.Libro
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row" style="margin-top:30px">
+
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Editar Libro</h4>
+            </div>
+
+            <form action="@Url.Action("Editar","Libro")" method="post">
+                <input type="hidden" class="form-control" name="idlibro" value="@Html.DisplayTextFor(m=>m.idlibro)" />
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" class="form-control" name="titulo" value="@Html.DisplayTextFor(m=>m.titulo)" />
+                </div>
+                <div class="form-group">
+                    <label>ISBN</label>
+                    <input type="text" class="form-control" name="isbn" value="@Html.DisplayTextFor(m=>m.isbn)" />
+                </div>
+                <div class="form-group">
+                    <label>Año edición</label>
+                    <input type="text" class="form-control" name="anio_edicion" value="@Html.DisplayTextFor(m=>m.anio_edicion)" />
+                </div>
+                <div class="form-group">
+                    <label>Editorial</label>
+                    <input type="text" class="form-control" name="editorial" value="@Html.DisplayTextFor(m=>m.editorial)" />
+                </div>
+                <div class="form-group">
+                    <label>Autor</label>
+                    @*<input type="text" class="form-control" name="id_autor" value="@Html.DisplayTextFor(m=>m.id_autor)" />*@
+                    <select id="id_autor" class="form-select" name="id_autor">
+                        <option value="">Seleccione un autor</option>
+                        @foreach (var autor in ViewBag.ListaAutores)
+                        {
+                            <option value="@autor.idautor" @(autor.idautor == ViewBag.autorSeleccionado ? "selected" : "")>@autor.nombre @autor.apellido</option>
+
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea class="form-control" name="descripcion">@Html.DisplayTextFor(m=>m.descripcion)</textarea>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-warning" href="@Url.Action("Inicio","Libro")">Volver</a>
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+</div>

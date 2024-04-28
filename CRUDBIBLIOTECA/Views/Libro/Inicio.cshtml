@@ -1,0 +1,72 @@
+﻿@model List<CRUDBIBLIOTECA.Models.Libro>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row" style="margin-top:30px">
+
+
+    <div class="col-sm-12">
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Lista de libros</h4>
+            </div>
+
+            <div class="panel-body">
+                <a class="btn btn-success" href="@Url.Action("Registrar","Libro")">Crear nuevo</a>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-bordered table-dark">
+                        <thead>
+                            <tr>
+                                <th>Titulo</th>
+                                <th>ISBN</th>
+                                <th>Año edicion</th>
+                                <th>Editorial</th>
+                                <th>Autor</th>
+                                <th>Descripción</th>
+
+                                <th style="width:150px"></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach (CRUDBIBLIOTECA.Models.Libro item in Model)
+                            {
+                                <tr>
+                                    <td>@item.titulo</td>
+                                    <td>@item.isbn</td>
+                                    <td>@item.anio_edicion</td>
+                                    <td>@item.editorial</td>
+                                    <td>@item.autor.nombre @item.autor.apellido</td>
+                                    <td>@item.descripcion</td>
+
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="@Url.Action("Editar","Libro",new {idlibro=item.idlibro})">Editar</a>
+                                        <a class="btn btn-danger btn-sm" href="@Url.Action("Eliminar","Libro",new {idlibro=item.idlibro})">Eliminar</a>
+
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
